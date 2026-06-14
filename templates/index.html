@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Sosio-Ekonomi Indonesia 2016–2025</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../static/css/style.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header-logo">Kosiomi-ID</div>
+      <nav class="header-nav">
+        <button class="nav-btn active" onclick="scrollToSection('sec1')">
+          Tren Nasional
+        </button>
+        <button class="nav-btn" onclick="scrollToSection('sec2')">
+          Antar Provinsi
+        </button>
+        <button class="nav-btn" onclick="scrollToSection('sec3')">
+          Korelasi Variabel
+        </button>
+        <button class="nav-btn" onclick="scrollToSection('sec4')">
+          Ranking Provinsi
+        </button>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <div class="hero">
+      <h1 class="hero-title">Ketimpangan, Kemiskinan<br />& Pengangguran</h1>
+      <p class="hero-sub">
+        Visualisasi data sosio-ekonomi 38 provinsi Indonesia selama satu dekade.
+        Temukan pola, tren, dan kesenjangan yang membentuk pembangunan nasional.
+      </p>
+    </div>
+
+    <!-- KPI STRIP -->
+    <div class="kpi-strip" id="kpi-strip">
+      <div class="kpi-card orange">
+        <div class="kpi-label">Gini Ratio · 2025</div>
+        <div class="kpi-value" id="kpi-gini">—</div>
+        <div class="kpi-meta">
+          <span class="kpi-trend" id="kpi-gini-trend">—</span>
+        </div>
+      </div>
+      <div class="kpi-card blue">
+        <div class="kpi-label">Tingkat Pengangguran - 2025</div>
+        <div class="kpi-value" id="kpi-tpe">—</div>
+        <div class="kpi-meta">
+          <span class="kpi-trend" id="kpi-tpe-trend">—</span>
+        </div>
+      </div>
+      <div class="kpi-card pink">
+        <div class="kpi-label">Kedalaman Kemiskinan - 2025</div>
+        <div class="kpi-value" id="kpi-miskin">—</div>
+        <div class="kpi-meta">
+          <span class="kpi-trend" id="kpi-miskin-trend">—</span>
+        </div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-label">Provinsi Terdata</div>
+        <div class="kpi-value">38</div>
+        <div class="kpi-meta">Seluruh Indonesia - 2016–2025</div>
+      </div>
+    </div>
+
+    <!-- MAIN -->
+    <main class="main">
+      <!-- SECTION 1: TREN INDONESIA -->
+      <section class="section" id="sec1">
+        <div class="section-header">
+          <div>
+            <div class="section-num">01 / TREN NASIONAL</div>
+            <div class="section-title">Line Chart Indonesia</div>
+            <div class="section-desc">
+              Tren rata-rata nasional 2016–2025 per indikator
+            </div>
+          </div>
+          <div class="toggle-group" id="toggle-indonesia">
+            <button
+              class="toggle-btn active-gini active"
+              data-ind="gini"
+              onclick="switchIndonesia('gini', this)"
+            >
+              Gini Ratio
+            </button>
+            <button
+              class="toggle-btn"
+              data-ind="pengangguran"
+              onclick="switchIndonesia('pengangguran', this)"
+            >
+              Pengangguran
+            </button>
+            <button
+              class="toggle-btn"
+              data-ind="kemiskinan"
+              onclick="switchIndonesia('kemiskinan', this)"
+            >
+              Kemiskinan
+            </button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="chart-wrap">
+              <canvas id="chart-indonesia"></canvas>
+            </div>
+            <div class="insight-box" id="insight-indonesia">
+              <div class="insight-text" id="insight-indonesia-text">
+                Memuat insight…
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: ANTAR PROVINSI -->
+      <section class="section" id="sec2">
+        <div class="section-header">
+          <div>
+            <div class="section-num">02 / TREN PROVINSI</div>
+            <div class="section-title">Line Chart Antar Provinsi</div>
+            <div class="section-desc">
+              Pilih hingga 8 provinsi untuk dilakukan perbandingan
+            </div>
+          </div>
+          <div class="toggle-group" id="toggle-provinsi">
+            <button
+              class="toggle-btn active-gini active"
+              data-ind="gini"
+              onclick="switchProvince('gini', this)"
+            >
+              Gini Ratio
+            </button>
+            <button
+              class="toggle-btn"
+              data-ind="pengangguran"
+              onclick="switchProvince('pengangguran', this)"
+            >
+              Pengangguran
+            </button>
+            <button
+              class="toggle-btn"
+              data-ind="kemiskinan"
+              onclick="switchProvince('kemiskinan', this)"
+            >
+              Kemiskinan
+            </button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Pilih Provinsi</div>
+          </div>
+          <div class="card-body">
+            <div class="province-multiselect" id="province-chips"></div>
+            <div class="chart-wrap">
+              <canvas id="chart-province"></canvas>
+            </div>
+            <div class="insight-box" id="insight-province">
+              <div class="insight-icon">📊</div>
+              <div class="insight-text" id="insight-province-text">
+                Pilih provinsi untuk melihat insight…
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: SCATTER -->
+      <section class="section" id="sec3">
+        <div class="section-header">
+          <div>
+            <div class="section-num">03 / KORELASI Antar Indikator</div>
+            <div class="section-title">Scatter Plot Antar Indikator</div>
+            <div class="section-desc">
+              Hubungan sosio-ekonomi antar indikator per provinsi
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="scatter-controls">
+              <div>
+                <div class="select-label">Sumbu X</div>
+                <select id="scatter-x" onchange="updateScatter()">
+                  <option value="gini">Gini Ratio</option>
+                  <option value="pengangguran">Tingkat Pengangguran</option>
+                  <option value="kemiskinan">Kedalaman Kemiskinan</option>
+                </select>
+              </div>
+              <div>
+                <div class="select-label">Sumbu Y</div>
+                <select id="scatter-y" onchange="updateScatter()">
+                  <option value="kemiskinan">Kedalaman Kemiskinan</option>
+                  <option value="gini">Gini Ratio</option>
+                  <option value="pengangguran">Tingkat Pengangguran</option>
+                </select>
+              </div>
+              <div>
+                <div class="select-label">Filter Tahun</div>
+                <select id="scatter-year" onchange="updateScatter()">
+                  <option value="all">Semua Tahun</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="chart-wrap">
+              <canvas id="chart-scatter"></canvas>
+            </div>
+            <div class="insight-box">
+              <div class="insight-icon">🔍</div>
+              <div class="insight-text" id="insight-scatter">
+                Setiap titik mewakili satu provinsi pada satu tahun. Warna
+                dibedakan per provinsi. Hover untuk detail.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: RANKING -->
+      <section class="section" id="sec4">
+        <div class="section-header">
+          <div>
+            <div class="section-num">04 / RANKING</div>
+            <div class="section-title">Top 5 Provinsi</div>
+            <div class="section-desc">
+              Filter per tahun - Nilai tertinggi setiap indikator
+            </div>
+          </div>
+          <div class="ranking-year-select" id="year-btns"></div>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">=> Ketimpangan Tertinggi</div>
+              <div>Gini Ratio</div>
+            </div>
+            <div class="card-body">
+              <div class="rank-list" id="rank-gini"></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">=> Pengangguran Tertinggi</div>
+              <div>% Angkatan Kerja</div>
+            </div>
+            <div class="card-body">
+              <div class="rank-list" id="rank-pengangguran"></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">=> Kemiskinan Terdalam</div>
+              <div>% Indeks Kedalaman</div>
+            </div>
+            <div class="card-body">
+              <div class="rank-list" id="rank-kemiskinan"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>© 2026 Dashboard Sosio-Ekonomi Indonesia - Data: BPS RI</div>
+      <div>
+        Gini Ratio - Tingkat Pengangguran Terbuka - Indeks Kedalaman Kemiskinan
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <script src="../static/js/index.js"></script>
+  </body>
+</html>
