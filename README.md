@@ -14,7 +14,7 @@ Menampilkan ringkasan indikator tahun **2025** dan perbandingannya terhadap tahu
 - Indeks Kedalaman Kemiskinan (P1)
 
 <p align="center">
-  <img src="screenshots/kpi-dashboard.png" width="800">
+  <img src="/kpi-dashboard.png" width="800">
 </p>
 
 ---
@@ -27,7 +27,7 @@ Visualisasi tren nasional Indonesia menggunakan **Line Chart** dengan filter ind
 - Indeks Kedalaman Kemiskinan (P1)
 
 <p align="center">
-  <img src="screenshots/national-trend.png" width="800">
+  <img src="/national-trend.png" width="800">
 </p>
 
 ---
@@ -41,7 +41,7 @@ Fitur yang tersedia:
 - Visualisasi menggunakan line chart
 
 <p align="center">
-  <img src="screenshots/province-trend.png" width="800">
+  <img src="/province-trend.png" width="800">
 </p>
 
 ---
@@ -57,7 +57,7 @@ Fitur yang tersedia:
 Visualisasi ini membantu mengidentifikasi pola dan hubungan antar indikator sosial-ekonomi.
 
 <p align="center">
-  <img src="screenshots/correlation-analysis.png" width="800">
+  <img src="/correlation-analysis.png" width="800">
 </p>
 
 ---
@@ -69,7 +69,7 @@ Fitur:
 - Filter tahun
 
 <p align="center">
-  <img src="screenshots/top5-ranking.png" width="800">
+  <img src="/top5-ranking.png" width="800">
 </p>
 
 ---
